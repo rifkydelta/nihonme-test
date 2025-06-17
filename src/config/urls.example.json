@@ -1,7 +1,7 @@
 {
   "urlwebtest": "https://example.com/nihonme",
   "forms": {
-    "media": "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true",
-    "material": "https://forms.gle/YOUR_FORM_ID"
+    "media": "https://your-media-form-url",
+    "material": "https://your-material-form-url"
   }
 } 

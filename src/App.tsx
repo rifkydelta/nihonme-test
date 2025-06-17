@@ -1,15 +1,30 @@
 import React, { useState } from 'react';
-import { ArrowLeft, PlayCircle, BookOpen, Monitor } from 'lucide-react';
+import { ArrowLeft, PlayCircle, BookOpen, Monitor, Smartphone, Tablet } from 'lucide-react';
 import urls from './config/urls.json';
 
 type ViewState = 'initial' | 'media' | 'material';
+type DeviceView = 'desktop' | 'tablet' | 'mobile';
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewState>('initial');
+  const [deviceView, setDeviceView] = useState<DeviceView>('desktop');
 
   const handleMediaClick = () => setCurrentView('media');
   const handleMaterialClick = () => setCurrentView('material');
   const handleBackClick = () => setCurrentView('initial');
+
+  const getDeviceWidth = () => {
+    switch (deviceView) {
+      case 'desktop':
+        return '100%';
+      case 'tablet':
+        return '768px';
+      case 'mobile':
+        return '375px';
+      default:
+        return '100%';
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
@@ -34,23 +49,68 @@ function App() {
           {/* Left Column - Website Preview */}
           <div className="lg:col-span-3 bg-white rounded-3xl shadow-lg overflow-hidden border border-slate-200/50 backdrop-blur-sm flex flex-col">
             <div className="bg-slate-800/95 px-6 py-4 border-b border-slate-700/50 flex-shrink-0">
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                <div className="ml-4 text-slate-300 text-sm font-medium">
-                  rifkydelta.github.io/nihonme
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                  <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                  <div className="ml-4 text-slate-300 text-sm font-medium">
+                    {urls.urlwebtest.replace('https://', '').replace(/\/$/, '')}
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <span className="text-slate-400 text-sm">Ganti ukuran tampilan website</span>
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => setDeviceView('desktop')}
+                      className={`p-2 rounded-lg transition-colors duration-200 ${
+                        deviceView === 'desktop'
+                          ? 'bg-white/20 text-white'
+                          : 'text-slate-400 hover:text-white hover:bg-white/10'
+                      }`}
+                      title="Desktop View"
+                    >
+                      <Monitor size={18} />
+                    </button>
+                    <button
+                      onClick={() => setDeviceView('tablet')}
+                      className={`p-2 rounded-lg transition-colors duration-200 ${
+                        deviceView === 'tablet'
+                          ? 'bg-white/20 text-white'
+                          : 'text-slate-400 hover:text-white hover:bg-white/10'
+                      }`}
+                      title="Tablet View"
+                    >
+                      <Tablet size={18} />
+                    </button>
+                    <button
+                      onClick={() => setDeviceView('mobile')}
+                      className={`p-2 rounded-lg transition-colors duration-200 ${
+                        deviceView === 'mobile'
+                          ? 'bg-white/20 text-white'
+                          : 'text-slate-400 hover:text-white hover:bg-white/10'
+                      }`}
+                      title="Mobile View"
+                    >
+                      <Smartphone size={18} />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="flex-1 min-h-0">
-              <iframe
-                src={urls.urlwebtest}
-                className="w-full h-full border-0"
-                title="Website Preview"
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-camera allow-microphone"
-                allow="camera; microphone"
-              />
+            <div className="flex-1 min-h-0 flex items-center justify-center bg-slate-100">
+              <div
+                className="h-full transition-all duration-300 ease-in-out"
+                style={{ width: getDeviceWidth() }}
+              >
+                <iframe
+                  src={urls.urlwebtest}
+                  className="w-full h-full border-0"
+                  title="Website Preview"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-camera allow-microphone"
+                  allow="camera; microphone"
+                />
+              </div>
             </div>
           </div>
 

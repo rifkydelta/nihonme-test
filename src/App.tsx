@@ -29,21 +29,21 @@ function App() {
         </div>
       </div>
 
-      <div className="w-full h-screen p-1">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-1 h-full max-w-[99vw] mx-auto">
+      <div className="w-full h-screen p-4">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 h-[calc(100vh-2rem)] max-w-[99vw] mx-auto">
           {/* Left Column - Website Preview */}
-          <div className="lg:col-span-3 bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
-            <div className="bg-slate-800 px-6 py-4 border-b">
+          <div className="lg:col-span-3 bg-white rounded-3xl shadow-lg overflow-hidden border border-slate-200/50 backdrop-blur-sm flex flex-col">
+            <div className="bg-slate-800/95 px-6 py-4 border-b border-slate-700/50 flex-shrink-0">
               <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                 <div className="ml-4 text-slate-300 text-sm font-medium">
                   rifkydelta.github.io/nihonme
                 </div>
               </div>
             </div>
-            <div className="h-full">
+            <div className="flex-1 min-h-0">
               <iframe
                 src={urls.urlwebtest}
                 className="w-full h-full border-0"
@@ -55,61 +55,59 @@ function App() {
           </div>
 
           {/* Right Column - Form Panel */}
-          <div className="lg:col-span-1 bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 flex flex-col">
+          <div className="lg:col-span-1 bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden border border-slate-200/50 flex flex-col">
             {/* Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-8">
+            <div className="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 px-8 py-10 flex-shrink-0">
               <div className="flex items-center justify-between">
-                <div>
-                  <h1 className="text-2xl font-bold text-white">
-                    Uji Validitas Prototipe
-                  </h1>
-                  <p className="text-blue-100 mt-2">
-                    Pilih jenis validasi untuk memulai
-                  </p>
-                </div>
+                <h1 className="text-2xl font-bold text-white">
+                  Uji Validitas Prototipe
+                </h1>
                 {currentView !== 'initial' && (
                   <button
                     onClick={handleBackClick}
-                    className="flex items-center space-x-2 bg-white/20 hover:bg-white/30 transition-colors duration-200 rounded-lg px-4 py-2 text-white"
+                    className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 transition-all duration-300 rounded-xl px-4 py-2 text-white backdrop-blur-sm"
                   >
                     <ArrowLeft size={18} />
                     <span>Kembali</span>
                   </button>
                 )}
               </div>
+              <p className="text-white/80 mt-2">
+                Pengembangan Aplikasi Pembelajaran Bahasa Jepang Dengan Implementasi AI Object Detection
+              </p>
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 p-6">
+            <div className="flex-1 p-8 overflow-y-auto">
               {currentView === 'initial' && (
-                <div className="h-full flex flex-col justify-center space-y-6">
-                  <div className="text-center mb-8">
-                    <p className="text-slate-600 text-lg">
-                      Pilih jenis validasi yang ingin Anda lakukan
-                    </p>
+                <div className="h-full flex flex-col justify-center space-y-8">
+                  <div className="text-center">
+                  <p className="text-slate-600 text-lg leading-relaxed text-left">
+                    Dengan hormat, saya, Arindra Rifky Saputra, memohon kesediaan Bapak/Ibu untuk berkenan menjadi validator ahli media atau materi dalam pengembangan aplikasi ini, dengan memilih salah satu menu <strong>"Validator Media"</strong> atau <strong>"Validator Materi"</strong>. Atas perhatian dan kesediaan Bapak/Ibu, saya ucapkan terima kasih.
+                  </p>
                   </div>
                   
                   <div className="space-y-4">
                     <button
                       onClick={handleMediaClick}
-                      className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-3"
+                      className="w-full bg-gradient-to-br from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-medium py-5 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center space-x-3 group"
                     >
-                      <PlayCircle size={24} />
+                      <PlayCircle size={24} className="transform group-hover:scale-110 transition-transform duration-300" />
                       <span className="text-lg">Validator Media</span>
                     </button>
                     
                     <button
                       onClick={handleMaterialClick}
-                      className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold py-6 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-3"
+                      className="w-full bg-gradient-to-br from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium py-5 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center space-x-3 group"
                     >
-                      <BookOpen size={24} />
+                      <BookOpen size={24} className="transform group-hover:scale-110 transition-transform duration-300" />
                       <span className="text-lg">Validator Materi</span>
                     </button>
                   </div>
 
-                  <div className="text-center mt-8 pt-8 border-t border-slate-200">
+                  <div className="text-center mt-8 pt-8 border-t border-slate-200/50">
                     <p className="text-slate-500 text-sm">
-                      Kedua validator akan membantu menilai berbagai aspek prototipe
+                      NihonMe
                     </p>
                   </div>
                 </div>
@@ -117,19 +115,19 @@ function App() {
 
               {currentView === 'media' && (
                 <div className="h-full">
-                  <div className="mb-4">
-                    <h2 className="text-xl font-semibold text-slate-800 flex items-center space-x-2">
-                      <PlayCircle className="text-purple-500" size={24} />
+                  <div className="mb-6">
+                    <h2 className="text-xl font-semibold text-slate-800 flex items-center space-x-3">
+                      <PlayCircle className="text-indigo-500" size={24} />
                       <span>Form Validator Media</span>
                     </h2>
-                    <p className="text-slate-600 mt-1">
+                    <p className="text-slate-600 mt-2">
                       Evaluasi elemen media dan presentasi
                     </p>
                   </div>
-                  <div className="bg-slate-50 rounded-xl p-4 h-full">
+                  <div className="bg-slate-50/50 rounded-2xl p-4 h-full backdrop-blur-sm">
                     <iframe
                       src={urls.forms.media}
-                      className="w-full h-full border-0 rounded-lg"
+                      className="w-full h-full border-0 rounded-xl"
                       title="Media Validator Form"
                       frameBorder="0"
                     />
@@ -139,19 +137,19 @@ function App() {
 
               {currentView === 'material' && (
                 <div className="h-full">
-                  <div className="mb-4">
-                    <h2 className="text-xl font-semibold text-slate-800 flex items-center space-x-2">
+                  <div className="mb-6">
+                    <h2 className="text-xl font-semibold text-slate-800 flex items-center space-x-3">
                       <BookOpen className="text-blue-500" size={24} />
                       <span>Form Validator Materi</span>
                     </h2>
-                    <p className="text-slate-600 mt-1">
+                    <p className="text-slate-600 mt-2">
                       Nilai kualitas konten dan nilai edukatif
                     </p>
                   </div>
-                  <div className="bg-slate-50 rounded-xl p-4 h-full">
+                  <div className="bg-slate-50/50 rounded-2xl p-4 h-full backdrop-blur-sm">
                     <iframe
                       src={urls.forms.material}
-                      className="w-full h-full border-0 rounded-lg"
+                      className="w-full h-full border-0 rounded-xl"
                       title="Material Validator Form"
                       frameBorder="0"
                     />
